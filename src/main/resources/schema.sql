@@ -1,14 +1,20 @@
-DROP TABLE IF EXISTS userData;
-CREATE TABLE userData
+DROP TABLE IF EXISTS TB_CAT_META;
+CREATE TABLE TB_CAT_META
 (
-    id INT PRIMARY KEY,
-    email VARCHAR(30),
-    name VARCHAR(30)
+    category_id INT PRIMARY KEY,
+    category_name VARCHAR(30)
 );
 
-DROP TABLE IF EXISTS product;
-CREATE TABLE product
+DROP TABLE IF EXISTS TB_CAT_TOP;
+CREATE TABLE TB_CAT_TOP
 (
-    pid INT PRIMARY KEY,
-    name VARCHAR(10)
+    sub_category_id INT PRIMARY KEY,
+    sub_category_name VARCHAR(30)
+);
+
+DROP TABLE IF EXISTS TB_CAT_OTR;
+CREATE TABLE TB_CAT_OTR
+(
+    sub_category_id INT PRIMARY KEY,
+    sub_category_name VARCHAR(30)
 );
