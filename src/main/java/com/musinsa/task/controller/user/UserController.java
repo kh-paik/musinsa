@@ -25,7 +25,7 @@ public class UserController {
     return categoryService.getAllCategories();
   }
 
-  @GetMapping("/categories/sub")
+  @GetMapping("/categories/all")
   public List<String> getAllSubCategory() {
     return categoryService.getAllSubCategories();
   }
