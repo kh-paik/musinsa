@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.musinsa.task.repository.mapper.CategoryMapper">
+    <select id="getAllCategories" resultType="String">
+        SELECT CATEGORY_NAME FROM TB_CAT_META
+    </select>
+    <select id="getAllSubCategories" resultType="String">
+        SELECT SUB_CATEGORY_NAME FROM TB_CAT_SUB
+    </select>
+    <select id="getSubCategory" parameterType="Integer" resultType="String">
+        SELECT SUB_CATEGORY_NAME FROM TB_CAT_SUB WHERE CATEGORY_ID = #{categoryId}
+    </select>
+</mapper>

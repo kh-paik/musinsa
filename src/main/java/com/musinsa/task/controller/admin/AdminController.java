@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin")
 public class AdminController {
 
-  @PostMapping("/category")
+  @PostMapping("/categories")
   public String addCategory() {
     return "POST/category";
   }
 
-  @PutMapping("/category")
+  @PutMapping("/categories")
   public void updateCategory() {
 
   }
 
-  @DeleteMapping("/category")
+  @DeleteMapping("/categories")
   public void deleteCategory() {
 
   }
