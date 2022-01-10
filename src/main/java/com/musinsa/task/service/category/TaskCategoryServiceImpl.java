@@ -1,13 +1,12 @@
 package com.musinsa.task.service.category;
 
-import com.musinsa.task.dto.DTO;
+import com.musinsa.task.dto.DTO.CategoryDTO;
+import com.musinsa.task.dto.DTO.SubCategoryDTO;
 import com.musinsa.task.repository.category.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-
 
 @Slf4j
 @Service
@@ -38,7 +37,7 @@ public class TaskCategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Integer addCategory(DTO.CategoryDTO categoryDTO) {
+  public Integer addCategory(CategoryDTO categoryDTO) {
     Integer idByName = categoryRepository.getCategoryIdByName(categoryDTO);
     if (idByName != null) {
       return null;
@@ -48,7 +47,7 @@ public class TaskCategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Integer addSubCategory(DTO.SubCategoryDTO subCategoryDTO) {
+  public Integer addSubCategory(SubCategoryDTO subCategoryDTO) {
     Integer idByName = categoryRepository.getSubCategoryIdByName(subCategoryDTO);
     if (idByName != null) {
       return null;
@@ -58,10 +57,15 @@ public class TaskCategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void updateCategory() {
-    // Sub-Category-Name 만 바꿀까나
-    // Output
-    // Client 업데이트를 위해 추가한 데이터를 다시 가져오도록.
+  public String updateCategoryName(CategoryDTO categoryDTO) {
+    categoryRepository.updateCategoryName(categoryDTO);
+    return categoryDTO.getCategoryName();
+  }
+
+  @Override
+  public String updateSubCategoryName(SubCategoryDTO subCategoryDTO) {
+    categoryRepository.updateSubCategoryName(subCategoryDTO);
+    return subCategoryDTO.getSubCategoryName();
   }
 
   @Override
@@ -71,7 +75,7 @@ public class TaskCategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Integer deleteSubCategory(DTO.SubCategoryDTO subCategoryDTO) {
+  public Integer deleteSubCategory(SubCategoryDTO subCategoryDTO) {
     categoryRepository.deleteSubCategory(subCategoryDTO);
     return subCategoryDTO.getSubCategoryId();
   }

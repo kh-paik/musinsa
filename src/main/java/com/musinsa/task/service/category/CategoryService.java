@@ -1,6 +1,7 @@
 package com.musinsa.task.service.category;
 
-import com.musinsa.task.dto.DTO;
+import com.musinsa.task.dto.DTO.CategoryDTO;
+import com.musinsa.task.dto.DTO.SubCategoryDTO;
 
 import java.util.List;
 
@@ -11,13 +12,15 @@ public interface CategoryService {
 
   List<String> getSubCategory(Integer categoryId);
 
-  Integer addCategory(DTO.CategoryDTO categoryDTO);
+  Integer addCategory(CategoryDTO categoryDTO);
 
-  Integer addSubCategory(DTO.SubCategoryDTO subCategoryDTO);
+  Integer addSubCategory(SubCategoryDTO subCategoryDTO);
 
-  void updateCategory();
+  String updateCategoryName(CategoryDTO categoryDTO);
+
+  String updateSubCategoryName(SubCategoryDTO subCategoryDTO);
 
   Integer deleteCategory(Integer categoryId);
 
-  Integer deleteSubCategory(DTO.SubCategoryDTO subCategoryDTO);
+  Integer deleteSubCategory(SubCategoryDTO subCategoryDTO);
 }

@@ -1,6 +1,7 @@
 package com.musinsa.task.controller.admin;
 
-import com.musinsa.task.dto.DTO;
+import com.musinsa.task.dto.DTO.CategoryDTO;
+import com.musinsa.task.dto.DTO.SubCategoryDTO;
 import com.musinsa.task.service.category.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +26,7 @@ public class AdminController {
   }
 
   @PostMapping("/categories")
-  public Integer addCategory(@RequestBody DTO.CategoryDTO categoryDTO,
+  public Integer addCategory(@RequestBody CategoryDTO categoryDTO,
                              HttpServletResponse response) {
     Integer newCategoryId = categoryService.addCategory(categoryDTO);
     if (newCategoryId == null) {
@@ -37,7 +38,7 @@ public class AdminController {
 
   @PostMapping("/categories/{categoryId}")
   public Integer addSubCategory(@PathVariable Integer categoryId,
-                                @RequestBody DTO.SubCategoryDTO subCategoryDTO,
+                                @RequestBody SubCategoryDTO subCategoryDTO,
                                 HttpServletResponse response) {
     subCategoryDTO.setCategoryId(categoryId);
     Integer newSubCategoryId = categoryService.addSubCategory(subCategoryDTO);
@@ -49,8 +50,15 @@ public class AdminController {
   }
 
   @PutMapping("/categories")
-  public void updateCategory() {
+  public String updateCategoryName(@RequestBody CategoryDTO categoryDTO) {
+    return categoryService.updateCategoryName(categoryDTO);
+  }
 
+  @PutMapping("/categories/{categoryId}")
+  public String updateSubCategoryName(@PathVariable Integer categoryId,
+                                      @RequestBody SubCategoryDTO subCategoryDTO) {
+    subCategoryDTO.setCategoryId(categoryId);
+    return categoryService.updateSubCategoryName(subCategoryDTO);
   }
 
   @DeleteMapping("/categories/{categoryId}")
@@ -60,8 +68,8 @@ public class AdminController {
 
   @DeleteMapping("/categories/{categoryId}/{subCategoryId}")
   public Integer deleteSubCategory(@PathVariable Integer categoryId,
-                                @PathVariable Integer subCategoryId) {
-    DTO.SubCategoryDTO subCategoryDTO = new DTO.SubCategoryDTO(categoryId, subCategoryId, null);
+                                   @PathVariable Integer subCategoryId) {
+    SubCategoryDTO subCategoryDTO = new SubCategoryDTO(categoryId, subCategoryId, null);
     return categoryService.deleteSubCategory(subCategoryDTO);
   }
 }

@@ -1,6 +1,7 @@
 package com.musinsa.task.repository.category;
 
-import com.musinsa.task.dto.DTO;
+import com.musinsa.task.dto.DTO.CategoryDTO;
+import com.musinsa.task.dto.DTO.SubCategoryDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -10,14 +11,24 @@ import java.util.List;
 @Mapper
 public interface CategoryRepository {
   List<String> getAllCategories();
-  List<String> getAllSubCategories();
-  List<String> getSubCategory(Integer categoryId);
-  Integer getCategoryIdByName(DTO.CategoryDTO categoryDto);
-  Integer getSubCategoryIdByName(DTO.SubCategoryDTO subCategoryDTO);
 
-  Integer addCategory(DTO.CategoryDTO categoryDto);
-  Integer addSubCategory(DTO.SubCategoryDTO subCategoryDTO);
+  List<String> getAllSubCategories();
+
+  List<String> getSubCategory(Integer categoryId);
+
+  Integer getCategoryIdByName(CategoryDTO categoryDto);
+
+  Integer getSubCategoryIdByName(SubCategoryDTO subCategoryDTO);
+
+  Integer addCategory(CategoryDTO categoryDto);
+
+  Integer addSubCategory(SubCategoryDTO subCategoryDTO);
+
+  void updateCategoryName(CategoryDTO categoryDTO);
+
+  void updateSubCategoryName(SubCategoryDTO subCategoryDTO);
 
   void deleteCategory(Integer categoryId);
-  void deleteSubCategory(DTO.SubCategoryDTO subCategoryDTO);
+
+  void deleteSubCategory(SubCategoryDTO subCategoryDTO);
 }
