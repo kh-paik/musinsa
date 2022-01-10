@@ -53,9 +53,15 @@ public class AdminController {
 
   }
 
-  @DeleteMapping("/categories")
-  public void deleteCategory() {
-
+  @DeleteMapping("/categories/{categoryId}")
+  public Integer deleteCategory(@PathVariable Integer categoryId) {
+    return categoryService.deleteCategory(categoryId);
   }
 
+  @DeleteMapping("/categories/{categoryId}/{subCategoryId}")
+  public Integer deleteSubCategory(@PathVariable Integer categoryId,
+                                @PathVariable Integer subCategoryId) {
+    DTO.SubCategoryDTO subCategoryDTO = new DTO.SubCategoryDTO(categoryId, subCategoryId, null);
+    return categoryService.deleteSubCategory(subCategoryDTO);
+  }
 }

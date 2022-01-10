@@ -18,6 +18,7 @@ public class DTO {
   @Getter
   @Setter
   @NoArgsConstructor
+  @AllArgsConstructor
   public static class SubCategoryDTO {
     Integer categoryId;
     Integer subCategoryId;

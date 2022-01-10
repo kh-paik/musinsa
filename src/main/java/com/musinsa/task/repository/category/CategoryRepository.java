@@ -17,5 +17,7 @@ public interface CategoryRepository {
 
   Integer addCategory(DTO.CategoryDTO categoryDto);
   Integer addSubCategory(DTO.SubCategoryDTO subCategoryDTO);
+
   void deleteCategory(Integer categoryId);
+  void deleteSubCategory(DTO.SubCategoryDTO subCategoryDTO);
 }

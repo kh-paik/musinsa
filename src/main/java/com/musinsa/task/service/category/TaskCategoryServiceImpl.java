@@ -65,14 +65,14 @@ public class TaskCategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void deleteCategory() {
-    // Input
-    // category_id
+  public Integer deleteCategory(Integer categoryId) {
+    categoryRepository.deleteCategory(categoryId);
+    return categoryId;
   }
 
   @Override
-  public void deleteSubCategory() {
-    // Input
-    // category_id, sub_category_id
+  public Integer deleteSubCategory(DTO.SubCategoryDTO subCategoryDTO) {
+    categoryRepository.deleteSubCategory(subCategoryDTO);
+    return subCategoryDTO.getSubCategoryId();
   }
 }

@@ -17,7 +17,7 @@ public interface CategoryService {
 
   void updateCategory();
 
-  void deleteCategory();
+  Integer deleteCategory(Integer categoryId);
 
-  void deleteSubCategory();
+  Integer deleteSubCategory(DTO.SubCategoryDTO subCategoryDTO);
 }

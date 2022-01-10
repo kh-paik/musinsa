@@ -36,4 +36,12 @@
         INSERT INTO TB_CAT_SUB (CATEGORY_ID, SUB_CATEGORY_NAME)
         VALUES (#{categoryId}, #{subCategoryName})
     </insert>
+    <delete id="deleteCategory" parameterType="Integer">
+        DELETE FROM TB_CAT_META
+        WHERE CATEGORY_ID = #{categoryId}
+    </delete>
+    <delete id="deleteSubCategory" parameterType="com.musinsa.task.dto.DTO$SubCategoryDTO">
+        DELETE FROM TB_CAT_SUB
+        WHERE (CATEGORY_ID, SUB_CATEGORY_ID) = (#{categoryId}, #{subCategoryId})
+    </delete>
 </mapper>
