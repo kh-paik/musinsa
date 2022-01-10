@@ -1,6 +1,7 @@
 package com.musinsa.task.service.category;
 
-import com.musinsa.task.repository.CategoryRepository;
+import com.musinsa.task.dto.DTO;
+import com.musinsa.task.repository.category.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -37,17 +38,41 @@ public class TaskCategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void addCategory() {
+  public Integer addCategory(DTO.CategoryDTO categoryDTO) {
+    Integer idByName = categoryRepository.getCategoryIdByName(categoryDTO);
+    if (idByName != null) {
+      return null;
+    }
+    categoryRepository.addCategory(categoryDTO);
+    return categoryDTO.getCategoryId();
+  }
 
+  @Override
+  public Integer addSubCategory(DTO.SubCategoryDTO subCategoryDTO) {
+    Integer idByName = categoryRepository.getSubCategoryIdByName(subCategoryDTO);
+    if (idByName != null) {
+      return null;
+    }
+    categoryRepository.addSubCategory(subCategoryDTO);
+    return subCategoryDTO.getSubCategoryId();
   }
 
   @Override
   public void updateCategory() {
-
+    // Sub-Category-Name 만 바꿀까나
+    // Output
+    // Client 업데이트를 위해 추가한 데이터를 다시 가져오도록.
   }
 
   @Override
   public void deleteCategory() {
+    // Input
+    // category_id
+  }
 
+  @Override
+  public void deleteSubCategory() {
+    // Input
+    // category_id, sub_category_id
   }
 }
