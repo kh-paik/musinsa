@@ -1,5 +1,37 @@
 # Category Service 과제입니다.
 
+## 환경 구축
+
+### (1) JDK 설치
+
+* JDK 11 설치해야 합니다.
+
+### (2) Git Clone
+
+* Home 디렉토리에서 클론 받습니다.
+
+### (3) H2 Database 설치 & 실행
+
+* https://www.h2database.com/html/main.html 접속합니다.
+* Download -> All Platforms 다운로드합니다.
+* zip 파일을 압축 해제합니다.
+* 압축 해제된 디렉토리 h2/bin/ 으로 이동합니다.
+* h2.sh 실행합니다.
+    * $ sh h2.sh
+* 브라우저 H2 콘솔 창에서 다음과 같이 설정합니다.
+    * 저장한 설정: Generic H2 (Embedded)
+    * JDBC URL: jdbc:h2:~/musinsa/database
+    * 사용자명: sa
+    * 비밀전호: 없음
+
+### (4) 빌드 & 실행
+
+* Clone 받은 디렉토리로 이동합니다.
+* 소스 코드를 빌드합니다.
+    * $ ./gradlew build
+* 빌드한 파일을 실행합니다.
+    * $ ./gradlew bootRun
+
 ## API List
 
 ### 카테고리 조회 API
